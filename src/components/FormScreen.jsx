@@ -8,7 +8,7 @@ import elementsData from '../data/PeriodicTableJSON.json';
 export const FormScreen = () => {
 	
 	const [ formValues, handleInputChange ] = useForm({
-		elementName: ''
+		elementName: '',
 	})
 
 	const {  elementName } = formValues;
@@ -27,7 +27,6 @@ export const FormScreen = () => {
 						onChange={handleInputChange}	
 					/>
 				</InputDiv>
-				
 
 			  <SubmitDiv>
 	     	   	<SubmitInput type="submit" value="Submit" />
@@ -42,12 +41,10 @@ export const FormScreen = () => {
 					{
 						elementsData.elements.map(element => {
 
-						if ( element.name.toLocaleLowerCase() === elementName ) {
+						if ( element.name.toLocaleLowerCase() === elementName.toLocaleLowerCase() ) {
 								
-							console.log(element);
-
 							return(
-								<ElementCard { ...element } />
+								<ElementCard { ...element } key={element.name} />
 							)
 
 
